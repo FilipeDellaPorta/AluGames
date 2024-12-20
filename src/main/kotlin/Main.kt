@@ -15,5 +15,9 @@ fun main() {
         .send(request, BodyHandlers.ofString())
 
     val json = response.body()
-    println(json)
+
+    val meuJogo = Jogo()
+    meuJogo.titulo = "Batman"
+    meuJogo.capa = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/35140/capsule_sm_120.jpg?t=1702934705"
+    println(meuJogo)
 }
