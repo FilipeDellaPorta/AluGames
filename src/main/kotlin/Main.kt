@@ -26,13 +26,25 @@ fun main() {
 
     val gson = Gson()
 
-    try {
+    val resultado = runCatching {
         val meuInfoJogo = gson.fromJson(json, InfoJogo::class.java)
-
 
         val meuJogo = Jogo(meuInfoJogo.info.title, meuInfoJogo.info.thumb)
         println(meuJogo)
-    } catch (ex: Exception) {
+    }
+
+    resultado.onFailure {
         println("Jogo não encontrado. Tente outro id.")
     }
+
+    resultado.onSuccess {
+        println("Deseja inserir descrição personalizada? S/N")
+        val opcao = leitura.nextLine()
+        if (opcao.equals("s", true)) {
+            println("Insira a descrição personalizada para o jogo:")
+            val descricao = leitura.nextLine()
+
+        }
+    }
+
 }
