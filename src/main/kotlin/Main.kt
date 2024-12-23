@@ -1,4 +1,4 @@
-
+import com.google.gson.Gson
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -16,8 +16,8 @@ fun main() {
 
     val json = response.body()
 
-    val meuJogo = Jogo()
-    meuJogo.titulo = "Batman"
-    meuJogo.capa = "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/35140/capsule_sm_120.jpg?t=1702934705"
+    val gson = Gson()
+    val meuJogo = gson.fromJson(json, InfoJogo::class.java)
+
     println(meuJogo)
 }
